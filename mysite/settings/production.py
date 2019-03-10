@@ -26,7 +26,7 @@ ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
+
 #数据库设置
 
 DATABASES = {
