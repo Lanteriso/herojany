@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'demo',
+    'ckeditor',
+    'ckeditor_uploader',
     'blog',
+    'read_statistics',
+    'comment',
+    'likes',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -127,10 +133,12 @@ STATIC_URL = '/static/'
 '''注释后heroku能更新了模型STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )'''
+
 # Django用户上传的都叫media文件
 MEDIA_URL = "/media/"
 # media配置，用户上传的文件都默认放在这个文件夹下
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 #数据库设置
 
 DATABASES = {
@@ -143,5 +151,51 @@ if os.getenv('DATABASE_URL') is not None:
     import dj_database_url
 
     DATABASES['default'] = dj_database_url.config()
+
+
+# 配置ckeditor
+CKEDITOR_UPLOAD_PATH = 'upload/'
+
+CKEDITOR_CONFIGS = {
+    'default': {},
+    'comment_ckeditor': {
+        'toolbar': 'custom',
+        'toolbar_custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ["TextColor", "BGColor", 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ["Smiley", "SpecialChar", 'Blockquote'],
+        ],
+        'width': 'auto',
+        'height': '180',
+        'tabSpaces': 4,
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+    }
+}
+
+# 自定义参数
+EACH_PAGE_BLOGS_NUMBER = 7
+
+# 缓存设置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
+# 发送邮件设置
+# https://docs.djangoproject.com/en/2.0/ref/settings/#email
+# https://docs.djangoproject.com/en/2.0/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'lrnman@qq.com'
+EMAIL_HOST_PASSWORD = 'umuxopsdpcgnbggf'#muzwogwhwqmrcaif'aeudvpccmuzodchh'  # 授权码
+EMAIL_SUBJECT_PREFIX = '[JANYROO BLOG] '
+EMAIL_USE_TLS = True  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)
+
 
 django_heroku.settings(locals())#这放结尾
