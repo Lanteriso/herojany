@@ -182,12 +182,13 @@ CKEDITOR_CONFIGS = {
 EACH_PAGE_BLOGS_NUMBER = 7
 
 # 缓存设置
+'''
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
+        'LOCATION': '/staticfiles/',
     }
-}
+}'''
 
 # 发送邮件设置
 # https://docs.djangoproject.com/en/2.0/ref/settings/#email
