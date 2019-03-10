@@ -129,7 +129,7 @@ def send_verification_code(request):
             request.session[send_for] = code
             request.session['send_code_time'] = now
             
-            # 发送邮件
+            # 发送邮件#
             send_mail(
                 '绑定邮箱',
                 '验证码：%s' % code,
