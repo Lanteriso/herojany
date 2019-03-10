@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from .forms import LoginForm, RegForm, ChangeNicknameForm, BindEmailForm, ChangePasswordForm, ForgotPasswordForm
 from .models import Profile
-
+#
 
 def login_for_medal(request):
     login_form = LoginForm(request.POST)
