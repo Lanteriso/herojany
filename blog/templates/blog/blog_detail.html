@@ -248,7 +248,7 @@
                         liked_num.text(data['liked_num']);
                     }else{
                         if(data['code']==400){
-                            window.location.href = '{% url 'login' %}?from={{ request.GET.from }}';
+                            $('#login_modal').modal('show');
                         }else{
                             alert(data['message']);    
                         }                        
@@ -258,11 +258,6 @@
                     console.log(xhr)
                 }
             });
-        }
-        if (window.location.hash) {
-            $('html').animate({
-                scrollTop: $(window.location.hash).offset().top - 60
-            }, 500);
         }
     </script>
 {% endblock %}
