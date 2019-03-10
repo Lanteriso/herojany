@@ -185,7 +185,7 @@ EACH_PAGE_BLOGS_NUMBER = 7
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'unique-snowflake',
+        'LOCATION': 'my_cache_table',
     }
 }
 
