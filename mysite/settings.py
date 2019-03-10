@@ -73,7 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'user.context_processors.login_modal_form',
+
             ],
         },
     },
@@ -129,6 +129,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -183,7 +184,11 @@ CACHES = {
         'LOCATION': 'my_cache_table',
     }
 }
-
+# QQ登录配置
+QQ_APP_ID = '101523209'
+#QQ_APP_KEY = os.environ['QQ_APP_KEY']
+QQ_REDIRECT_URL = 'http://zqyhdm.com/user/login_by_qq'
+QQ_STATE = 'zqyhdm'
 # 发送邮件设置
 # https://docs.djangoproject.com/en/2.0/ref/settings/#email
 # https://docs.djangoproject.com/en/2.0/topics/email/
@@ -194,6 +199,43 @@ EMAIL_HOST_USER = 'lrnman@qq.com'
 EMAIL_HOST_PASSWORD = 'umuxopsdpcgnbggf'#muzwogwhwqmrcaif'aeudvpccmuzodchh'  # 授权码
 EMAIL_SUBJECT_PREFIX = '[JANYROO BLOG] '
 EMAIL_USE_TLS = True  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)
+# django-notifications-hq设置
+DJANGO_NOTIFICATIONS_CONFIG = {
+    'USE_JSONFIELD': True,
+}
 
 
+
+ADMINS = (
+    ('admin', 'lrnman@qq.com'),
+)
+
+# 日志文件
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/mysite_debug.log',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
 django_heroku.settings(locals())#这放结尾
