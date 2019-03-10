@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5fohetxlqj3#g56h2xgnwp@0g9gx7m%xzrxk65i!ql2b#4s!d6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -130,15 +130,16 @@ MEDIA_URL = "/media/"
 # media配置，用户上传的文件都默认放在这个文件夹下
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 #数据库设置
-if os.getenv('DATABASE_URL') is not None:
-    import dj_database_url
 
-    DATABASES['default'] = dj_database_url.config()
-else:
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+if os.getenv('DATABASE_URL') is not None:
+    import dj_database_url
+
+    DATABASES['default'] = dj_database_url.config()
+
 django_heroku.settings(locals())#这放结尾
