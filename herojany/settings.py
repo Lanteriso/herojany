@@ -133,9 +133,10 @@ STATIC_DIRS = (
 os.path.join(BASE_DIR, 'static'),
 )
 STATIC_URL = '/static/'
-'''注释后heroku能更新了模型STATICFILES_DIRS = (
+'''注释后heroku能更新了模型'''
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-)'''
+)
 
 # Django用户上传的都叫media文件
 MEDIA_URL = "/media/"
