@@ -1,11 +1,12 @@
 import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.db.models import Sum
 from django.core.cache import cache
 from django.urls import reverse
 from read_statistics.utils import get_seven_days_read_data, get_today_hot_data, get_yesterday_hot_data
+from notifications.models import Notification
 from blog.models import Blog
 
 
@@ -36,3 +37,15 @@ def home(request):
     context['yesterday_hot_data'] = get_yesterday_hot_data(blog_content_type)
     context['hot_blogs_for_7_days'] = hot_blogs_for_7_days
     return render(request, 'home.html', context)
+
+
+def my_notifications(request):
+    context = {}
+    return render(request, 'my_notifications.html', context)
+
+
+def my_notification(request, my_notification_pk):
+    my_notification = get_object_or_404(Notification, pk=my_notification_pk)
+    my_notification.unread = False
+    my_notification.save()
+    return redirect(my_notification.data['url'])

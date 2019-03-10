@@ -44,16 +44,13 @@
                     {% else %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                {% if user.has_nickname %}
-                                    {{ user.username }}({{ user.get_nickname }}) 
-                                {% else %}
-                                    {{ user.username }}
-                                {% endif %}
+                                Hello,{{ user.get_nickname_or_username }}
+                                <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'user_info' %}">个人资料</a></li>
-                                <li><a href="{% url 'change_password' %}">修改密码</a></li>
+                                 <li><a href="{% url 'my_notifications' %}">我的消息 </a></li>
                                 {% if user.is_staff or user.is_superuser %}
                                     <li><a href="{% url 'admin:index' %}">后台管理</a></li>
                                 {% endif %}
