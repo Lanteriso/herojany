@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from demo import views as demo_views  # new
+admin.autodiscover()
 urlpatterns = [
     path('', demo_views.index),  # new
     path('admin/', admin.site.urls),
