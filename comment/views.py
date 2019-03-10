@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
-#
+
 
 def update_comment(request):
     referer = request.META.get('HTTP_REFERER', reverse('home'))

@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from .forms import LoginForm, RegForm, ChangeNicknameForm, BindEmailForm, ChangePasswordForm, ForgotPasswordForm
 from .models import Profile
-#
+
 
 def login_for_medal(request):
     login_form = LoginForm(request.POST)
@@ -133,7 +133,7 @@ def send_verification_code(request):
             send_mail(
                 '绑定邮箱',
                 '验证码：%s' % code,
-                'lrnman@qq.com',
+                '2872402050@qq.com',
                 [email],
                 fail_silently=False,
             )
