@@ -37,7 +37,7 @@
             <a class="nav-link" href="{% url 'todonow:关于' %}">关于本站</a>
           </li>
           <li class="">
-            <a class="nav-link" href="">用户名:{{ user }}</a>
+            <a class="nav-link" href="{% url 'home' %}">{{ user }}返回博客</a>
           </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0 col-7 justify-content-end" method="POST" action="">
