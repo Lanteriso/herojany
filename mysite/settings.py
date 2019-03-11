@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'user',
     'notifications',
     'my_notifications',
-    'todolist',
+
 ]
 
 MIDDLEWARE = [
