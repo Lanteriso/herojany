@@ -67,7 +67,6 @@ def timeing(request,每一件事_id):
     b= int(request.POST['计时状态'])
     if b>1051982140862:
         b=0
-    print(a.work_time,'+',b)
     a.work_time += b
     wm = a.work_time
 
