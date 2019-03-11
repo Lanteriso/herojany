@@ -8,19 +8,19 @@ from django.contrib.auth.models import User
 def home(request):
     if request.method == "POST":
         if request.POST["待办事项"] == '':
-            content = {"清单": Todo.objects.filter(用户=request.user),'警告':'请输入内容!'}
+            content = {"清单": Todo.objects.filter(todouser=request.user),'警告':'请输入内容!'}
             return render(request,'todolist/home.html',content)
         else:
             # request.user.username
 
-            a_row = Todo(用户=request.user,thing=request.POST['待办事项'])
+            a_row = Todo(todouser=request.user,thing=request.POST['待办事项'])
             a_row.save()
-            content={"清单":Todo.objects.filter(用户=request.user),'信息':'添加成功!'}
+            content={"清单":Todo.objects.filter(todouser=request.user),'信息':'添加成功!'}
             return render(request,'todolist/home.html',content)
     elif request.method == "GET":
         #content = {"清单": Todo.objects.all()}
 
-        content = {"清单": Todo.objects.filter(用户=request.user)}
+        content = {"清单": Todo.objects.filter(todouser=request.user)}
         print(content)
         return render(request, 'todolist/home.html', content)
 
@@ -74,7 +74,7 @@ def timeing(request,每一件事_id):
     s, w = divmod(wm, 1000)
     m, s = divmod(s, 60)
     h, m = divmod(m, 60)
-    #a.格式化秒="%02d:%02d:%02d" % (h, m, s)
+    a.gshm="%02d:%02d:%02d" % (h, m, s)
     a.save()
     # 1
     return redirect('todolist:主页')
