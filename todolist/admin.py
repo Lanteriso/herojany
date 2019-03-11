@@ -4,5 +4,5 @@ from .models import Todo
 # Register your models here.
 
 @admin.register(Todo)
-class BlogTypeAdmin(admin.ModelAdmin):
-    list_display = ('todouser','thing','done','work_time','gshm')
+class TodoAdmin(admin.ModelAdmin):
+    list_display = ('todouser','todothing','tododone','todoworktime','todogshm')

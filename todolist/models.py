@@ -4,11 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Todo(models.Model):
-
-    todouser = models.ForeignKey(User, on_delete=models.DO_NOTHING)  # 作者
-    thing = models.CharField(max_length=50)
-    done = models.BooleanField(default=False)
-    work_time = models.IntegerField(default=0)
-    gshm = models.CharField(max_length=15)
-    class Meta:
-        verbose_name_plural="待办事项"
+    todouser = models.ForeignKey(User, on_delete=models.CASCADE)  # 作者
+    todothing = models.CharField(max_length=50)
+    tododone = models.BooleanField(default=False)
+    todoworktime = models.IntegerField(default=0)
+    todogshm = models.CharField(max_length=15)
