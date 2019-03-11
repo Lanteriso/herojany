@@ -2,9 +2,13 @@ from django.shortcuts import render,redirect,HttpResponse#render渲染,redirect�
 from .models import Todo
 from django.contrib.auth.models import User
 # Create your views here.
+from django.http import HttpResponse
 
 
+def home(request):
+    return HttpResponse(u"欢迎光临 jany!")
 
+'''
 def home(request):
     if request.method == "POST":
         if request.POST["待办事项"] == '':
@@ -23,7 +27,7 @@ def home(request):
         content = {"清单": Todo.objects.filter(todouser=request.user)}
         print(content)
         return render(request, 'todolist/home.html', content)
-
+'''
 
 def about(request):
     return render(request,'todolist/about.html')
