@@ -31,19 +31,19 @@
                         <a href="{% url 'home' %}">首页</a>
                     </li>
                     <li class="{% block nav_blog_active %}{% endblock %}">
-                        <a href="{% url 'blog_list' %}">博客</a>
+                        <a href="{% url 'blog_list' %}">博客广场</a>
+                    </li>
+                    <li class="{% block nav_my_blog_active %}{% endblock %}">
+                        <a href="{% url 'my_blog_list' %}">个人中心</a>
                     </li>
                     <li class="">
-                        <a href="{% url 'blog_list' %}">个人中心</a>
-                    </li>
-                    <li class="">
-                        <a href="{% url 'blog_list' %}">好友</a>
+                        <a href="{% url 'blog_list' %}">待办清单</a>
                     </li>
                     <li class="">
                         <a href="{% url 'blog_list' %}">游戏</a>
                     </li>
                     <li class="">
-                        <a href="{% url 'blog_list' %}">装扮</a>
+                        <a href="/admin/blog/blog/add/">发博客</a>
                     </li>
                 </ul>
 

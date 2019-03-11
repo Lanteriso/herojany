@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}博客广场{% endblock %}
-{% block nav_blog_active %}active{% endblock %}
+{% block title %}我的网站{% endblock %}
+{% block nav_my_blog_active %}active{% endblock %}
 
 {% load staticfiles %}
 {% load comment_tags %}
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{% block blog_list_title %}所有博客列表{% endblock %}</div>
+                    <div class="panel-heading">{% block blog_list_title %}我的博客列表{% endblock %}</div>
                     <div class="panel-body">
                         {% for blog in blogs %}
                             <div class="blog">
