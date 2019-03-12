@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect,HttpResponse#render渲染,redirect重定向
 from .models import Todo
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required#判断是否登录
 # Create your views here.
 
 
-
+@login_required(login_url='login')#判断是否登录,如果末登陆就重定向到登录
 def home(request):
     if request.method == "POST":
         if request.POST["待办事项"] == '':
